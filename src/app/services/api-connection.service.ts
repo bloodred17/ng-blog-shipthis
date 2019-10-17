@@ -14,14 +14,14 @@ export class ApiConnectionService {
   ) { }
 
   fetchFromServer(){
-    console.log('%cInitiating GET request...', 'color: yellow; font-size: 18px;')
+    console.log('%cInitiating GET request...', 'color: yellow; font-size: 18px;');
     return this.http.get<BlogModel[]>('http://localhost:3000/api/blog/all', {
       responseType: 'json'
     });
   }
   
   addToServer(blog: BlogModel): any {
-    console.log('%cInitiating POST request...', 'color: lightpink; font-size: 18px;')
+    console.log('%cInitiating POST request...', 'color: lightpink; font-size: 18px;');
     return this.http.post<BlogModel[]>('http://localhost:3000/api/blog', blog, {
       observe: 'response',
       responseType: 'json'
@@ -48,7 +48,7 @@ export class ApiConnectionService {
   }
     
   deleteOneFromServer(id: string): any {
-    console.log('%cInitiating DELETE request...', 'color: blueviolet; font-size: 18px;')
+    console.log('%cInitiating DELETE request...', 'color: blueviolet; font-size: 18px;');
     return this.http.delete<any>('http://localhost:3000/api/blog/'+id, {}).pipe(
       catchError(errorRes => {
         return throwError(errorRes);
@@ -68,6 +68,33 @@ export class ApiConnectionService {
     }
     ids.forEach(id => {
       this.deleteOneFromServer(id);
+    });
+  }
+
+  updateToServer(blogData: BlogModel): any {
+    console.log('%cInitiating PUT request...', 'color: orange; font-size: 18px;');
+    return this.http.put<any>('http://localhost:3000/api/blog/'+blogData._id, blogData, { 
+      observe: 'response',
+      responseType: 'json'
+    }).pipe(
+      catchError(errorRes => {
+        return throwError(errorRes);
+      })
+      )
+    .subscribe((responseData) => {
+      console.log(responseData);
+      return responseData;
+      // return new Promise((resolve, reject) => {
+      //   console.log('Resolved Post');
+      //   resolve(responseData);
+      // });
+    }, (err) => {
+      console.log(err);
+      return err;
+      // return new Promise((resolve, reject) => {
+        //   console.log('Rejected Post');
+        //   reject(err);
+        // });
     });
   }
 }

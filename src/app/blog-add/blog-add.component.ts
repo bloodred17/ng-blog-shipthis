@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./blog-add.component.css']
 })
 export class BlogAddComponent implements OnInit {
+  @Input() blogToBeUpdated: BlogModel;
   @Input() updateEditorMode: boolean = false;
   @Output() showEditor = new EventEmitter<boolean>();
   // ToDo: Formal FORM VALIDATION
@@ -88,5 +89,32 @@ export class BlogAddComponent implements OnInit {
 
   onCancel(){
     this.showEditor.emit(false);
+  }
+
+  onUpdate(): BlogModel{
+    const blogUpdate: BlogModel = {
+      _id: this.blogToBeUpdated._id,
+      content: this.textarea.nativeElement.value,
+      title: this.title.nativeElement.value,
+      dateCreated: undefined,
+      dateModified: undefined,
+      tags: this.editorService.tagsAdder(this.blogToBeUpdated.tags,this.tags.nativeElement.value)
+    }
+    // blogUpdate.tags = 
+    blogUpdate.dateCreated = this.blogToBeUpdated.dateCreated;
+    blogUpdate.dateModified = new Date();
+    // console.log(blogUpdate);
+    return blogUpdate;
+  }
+
+  onPublish(){
+    const blogData = this.onUpdate();
+    this.api.updateToServer(blogData);
+  }
+
+  onCopy(){
+    this.title.nativeElement.value = this.blogToBeUpdated.title;
+    this.textarea.nativeElement.value = this.blogToBeUpdated.content;
+    this.tags.nativeElement.value = this.blogToBeUpdated.tags.join(',');
   }
 }

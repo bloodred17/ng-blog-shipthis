@@ -24,6 +24,7 @@
     *ngIf="editorDisplayStatus"
 >
     <app-blog-add 
+        [blogToBeUpdated]="ublog"
         [updateEditorMode]="editorDisplayStatus"
         (showEditor)="onShowEditor($event)"
     ></app-blog-add>

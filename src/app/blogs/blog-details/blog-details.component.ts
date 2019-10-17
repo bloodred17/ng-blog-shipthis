@@ -11,6 +11,8 @@ import { ApiConnectionService } from 'src/app/services/api-connection.service';
 })
 export class BlogDetailsComponent implements OnInit {
   id: string;
+  ublog: BlogModel;
+  blogs: BlogModel[];
   blogs$: Observable<BlogModel[]>;
   editorDisplayStatus: boolean = false;
 
@@ -29,6 +31,7 @@ export class BlogDetailsComponent implements OnInit {
       });
     } 
     this.blogs$ = this.api.fetchFromServer();
+    this.blogExtractor();
   }
 
   // ---------------Displays Editor on clicking Edit
@@ -44,4 +47,16 @@ export class BlogDetailsComponent implements OnInit {
       window.location.reload();
     },500);
   }
+
+  async blogExtractor(){
+    let blogsPromise = await this.blogs$.toPromise().then((data) => {
+      console.log('Extractor Working');
+      // console.log(data);
+      this.blogs = data;
+      this.ublog = this.blogs.find((blog) => {
+        return (this.id === blog._id);
+      });
+    });
+  }
+  
 }
