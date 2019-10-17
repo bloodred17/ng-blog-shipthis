@@ -22,8 +22,15 @@
         <div class="d-flex justify-content-center"
         >
             <p class="text-success"
+                *ngIf="published && updateStatus"
+            > Blog has been updated successfully </p>
+            <p class="text-success"
                 *ngIf="flag && submitted"
             > Blog has been successfully added </p>
+            <p class="text-danger"
+                *ngIf="published && !updateStatus && !flag"
+            > Blog could not be updated. 
+            </p>
             <p class="text-danger"
                 *ngIf="!flag"
             > Blog could not be added. 

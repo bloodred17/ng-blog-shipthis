@@ -1,4 +1,6 @@
 .jumbotron {
     padding: 3rem 5rem;
     margin: 0 10rem;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, rgba(142, 197, 252, 0.521) 0%, rgba(224, 195, 252, 0.637) 100%);
 }

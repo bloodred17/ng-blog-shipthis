@@ -71,9 +71,9 @@ export class ApiConnectionService {
     });
   }
 
-  updateToServer(blogData: BlogModel): any {
+  updateToServer(id:string, blogData: BlogModel): any {
     console.log('%cInitiating PUT request...', 'color: orange; font-size: 18px;');
-    return this.http.put<any>('http://localhost:3000/api/blog/'+blogData._id, blogData, { 
+    return this.http.put<any>('http://localhost:3000/api/blog/'+id, blogData, { 
       observe: 'response',
       responseType: 'json'
     }).pipe(
@@ -81,20 +81,12 @@ export class ApiConnectionService {
         return throwError(errorRes);
       })
       )
-    .subscribe((responseData) => {
-      console.log(responseData);
-      return responseData;
-      // return new Promise((resolve, reject) => {
-      //   console.log('Resolved Post');
-      //   resolve(responseData);
-      // });
-    }, (err) => {
-      console.log(err);
-      return err;
-      // return new Promise((resolve, reject) => {
-        //   console.log('Rejected Post');
-        //   reject(err);
-        // });
-    });
+    // .subscribe((responseData) => {
+    //   console.log(responseData);
+    //   return responseData;
+    // }, (err) => {
+    //   console.log(err);
+    //   return err;
+    // });
   }
 }
