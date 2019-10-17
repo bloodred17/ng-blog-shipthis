@@ -1,0 +1,48 @@
+<div class="message-box">
+    <span class="d-flex justify-content-center"
+        *ngIf="messageStatus"
+    > {{ message }} </span>
+    <span class="d-flex justify-content-center"
+        *ngIf="remove && messageStatus"
+    > {{ removeMessage }} </span>
+    <span class="d-flex justify-content-center"
+        *ngIf="remove && !messageStatus "
+    > Mark the blogs you wish to delete. </span>
+</div>
+
+
+
+<div class="container">
+        
+    <div class="blogs card mt-4"
+        *ngFor="let blog of blogs$ | async"
+        #card
+    >
+        
+        <!-- {{ blog._id }} -->
+        <div class="card-header d-flex justify-content-between">
+            <h3 class="card-title"> {{ blog.title }} </h3>
+            <input type="checkbox" 
+                name="remove" id="{{ blog._id }}" #remove
+                *ngIf="remove"
+            >
+        </div>
+        <div class="card-body"
+            [routerLink]="['/blog', blog._id]" 
+            routerLinkActive="router-link-active" 
+        >
+            <p class="card-text"> {{ blog.content | shorten:150 }} </p>
+        </div>
+        <div class="card-footer">
+            <p class="card-text text-muted text-right"> Last updated: {{ blog.dateModified | datemodified }} </p>
+        </div>
+    </div>
+
+</div>
+    
+<div class="d-flex justify-content-center mt-4" *ngIf="remove && !messageStatus">
+    <button class="btn btn-dark" (click)="removeBlog()">Apply</button>
+    <button class="btn btn-secondary mx-3" 
+        [routerLink]="['']" routerLinkActive="router-link-active" 
+    >Done</button>
+</div>

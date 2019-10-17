@@ -1,0 +1,12 @@
+<div class="d-flex justify-content-center py-2 px-3 m-3">
+    <button class="mx-3 btn btn-primary"
+        [routerLink]="['add']" routerLinkActive="router-link-active" 
+    > + Add </button>
+    <button class="mx-3 btn btn-danger" 
+        [routerLink]="['']" 
+        [queryParams]="{ remove: true}" routerLinkActive="router-link-active" 
+    > - Remove </button>
+    <button class="mx-3 btn btn-success"
+        [routerLink]="['']" routerLinkActive="router-link-active" 
+    > * Show All </button>
+</div>

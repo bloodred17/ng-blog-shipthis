@@ -1,0 +1,20 @@
+input[name='content'] {
+    height: 10rem;
+}
+
+.editor-title {
+    border-bottom: 2px solid gray;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-left: 1.7rem;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+form {
+    margin: 1rem auto;
+}
+
+label {
+    font-size: 2rem;
+}

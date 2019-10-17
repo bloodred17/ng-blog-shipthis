@@ -1,0 +1,30 @@
+<div class="container" *ngFor="let blog of blogs$ | async">
+
+    <div class="card" *ngIf="blog._id === id; else loading">
+        <div class="card-header" *ngIf="blog">
+            <h1 class="card-title text-center"> {{ blog.title }} </h1>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-justify"> {{ blog.content }} </p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <p class="text-muted text-left"> Created on: {{ blog.dateCreated | datecreated | date:short }} </p>
+            <p class="text-muted text-right"> Last updated: {{ blog.dateModified | datemodified }} </p>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper d-flex justify-content-center mt-4">
+    <button class="btn btn-dark" (click)="onEdit()" 
+        *ngIf="!editorDisplayStatus"
+    > Edit </button>
+</div>
+
+<div class="form-container mt-4"
+    *ngIf="editorDisplayStatus"
+>
+    <app-blog-add 
+        [updateEditorMode]="editorDisplayStatus"
+        (showEditor)="onShowEditor($event)"
+    ></app-blog-add>
+</div>
