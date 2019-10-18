@@ -27,12 +27,14 @@
             <p class="text-success"
                 *ngIf="flag && submitted"
             > Blog has been successfully added </p>
-            <p class="text-danger"
+            <p class="text-danger text-center px-3"
                 *ngIf="published && !updateStatus && !flag"
-            > Blog could not be updated. 
+            > 
+                Blog could not be updated. Title and Content cannot be empty. Pull values
+                if needed.
             </p>
             <p class="text-danger"
-                *ngIf="!flag"
+                *ngIf="!flag && !published"
             > Blog could not be added. 
                 <span *ngFor="let message of messages"> &nbsp;{{ message }}. </span>
             </p>
@@ -45,7 +47,7 @@
             <button class="btn btn-dark mt-3 mx-2" type="button"
                 *ngIf="updateEditorMode"
                 (click)="onCopy()"
-            > Fetch values </button>
+            > Pull values </button>
             <button class="btn btn-dark mt-3 mx-2" type="button"
                 *ngIf="updateEditorMode"
                 (click)="onUpdate()"
@@ -54,7 +56,12 @@
             type="button" (click)="onClear()"
             > Clear </button>
             <button class="btn btn-secondary mt-3 mx-2" 
-            type="button" (click)="onCancel()"
+                type="button" (click)="onClose()"
+                *ngIf="updateEditorMode"
+            > Close </button>
+            <button class="btn btn-secondary mt-3 mx-2" 
+                type="button" [routerLink]="['']" routerLinkActive="router-link-active"
+                *ngIf="!updateEditorMode"
             > Cancel </button>
             <button class="btn btn-info mt-3 mx-2" type="button"
                 *ngIf="updateEditorMode"

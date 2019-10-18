@@ -12,8 +12,8 @@ export class AppComponent {
     private dataProvider: DataBridgeService
   ){
     console.log(
-      "%cHire me.",
-      "color:red;font-family:Helvetica;font-size:4rem;-webkit-text-stroke: 1px black;font-weight:bold"
+      "%cbloodred17/ng-blog-shipthis",
+      "color:red;font-family:Helvetica;font-size:2rem;-webkit-text-stroke: 1px black;font-weight:bold"
     );
   }
   ngOnInit(): void {

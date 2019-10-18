@@ -11,17 +11,23 @@ import { Observable } from 'rxjs';
   styleUrls: ['./blog-add.component.css']
 })
 export class BlogAddComponent implements OnInit {
+  // ------------Pull values from parent
   @Input() blogToBeUpdated: BlogModel;
-  @Input() updateEditorMode: boolean = false;
-  @Output() showEditor = new EventEmitter<boolean>();
+  //-------------Start blog editor on parent's request
+  @Input() updateEditorMode: boolean = false; // -response
+  @Output() showEditor = new EventEmitter<boolean>(); // -request
   // ToDo: Formal FORM VALIDATION
   // flag:true -> value:ok
   flag:boolean = true;
+  // ------------------Input message state and text
   submitted: boolean = false;
-  published: boolean = false;
   messages: string[];
+  // ------------------Edit message state and text
+  published: boolean = false;
   updateStatus: boolean = false;
   updateMessage: string;
+
+  // ---------------for working with the input fields
   @ViewChild('f', {static: false}) blogInputData: NgForm;
   @ViewChild('textarea', { static: false }) textarea: ElementRef;
   @ViewChild('title', { static: false }) title: ElementRef;
@@ -92,7 +98,7 @@ export class BlogAddComponent implements OnInit {
     this.updateStatus = false;
   }
 
-  onCancel(){
+  onClose(){
     this.showEditor.emit(false);
   }
 
@@ -114,6 +120,7 @@ export class BlogAddComponent implements OnInit {
 
   onPublish(){
     this.published = true;
+    this.flag = true;
     const blogData = this.onUpdate();
     for(let key in blogData){
       if(blogData[key] === ''){
@@ -133,9 +140,10 @@ export class BlogAddComponent implements OnInit {
   }
 
   async dummyPutRequest(blogData){   
-    let updatePromise = await this.api.updateToServer(this.blogToBeUpdated._id, blogData).toPromise().then((data)=> {
-      console.log(data);
-      this.updateStatus = data.ok;
-    });
+    let updatePromise = await this.api.updateToServer(this.blogToBeUpdated._id, blogData)
+    // .toPromise().then((data)=> {
+    //   console.log(data);
+    //   this.updateStatus = data.ok;
+    // });
   }
 }
