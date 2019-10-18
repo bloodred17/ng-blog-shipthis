@@ -3,7 +3,7 @@ input[name='content'] {
 }
 
 .editor-title {
-    border-bottom: 2px solid gray;
+    border-bottom: 3px solid blueviolet;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     padding-left: 1.7rem;
@@ -17,4 +17,9 @@ form {
 
 label {
     font-size: 2rem;
+}
+
+.container{
+    padding: 0 2.4rem;
+    /* border: 1px solid black; */
 }
