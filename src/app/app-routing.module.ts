@@ -10,7 +10,8 @@ import { BlogAddComponent } from './blog-add/blog-add.component';
 const routes: Routes = [
   { path: '', component: BlogsComponent },
   { path: 'blog/:id', component: BlogDetailsComponent },
-  { path: 'add', component: BlogAddComponent }
+  { path: 'add', component: BlogAddComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
