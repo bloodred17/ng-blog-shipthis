@@ -14,11 +14,7 @@ body{
 
     color: white;
 }
-.btn {
-    border-radius: 25px;
-    padding: 1rem 1.7rem;
-    box-shadow: 1px 2px 10px rgba(128, 128, 128, 0.836);
-}
+
 .btn-primary {
     background-image: linear-gradient(to right, #314755 0%, #26a0da 100%);
 }
