@@ -77,26 +77,6 @@ export class FirebaseService {
         observe: 'response'
       }
     )
-    .pipe(map(
-      (responseData) => {
-        const blogsArray: BlogModel[] = [];
-        for (const key in responseData){
-          if(responseData.hasOwnProperty(key)){
-            blogsArray.push({ ...responseData[key], _id: key });
-          }
-        }
-        return blogsArray;
-      }),
-      catchError(errorRes => {
-        //Send to analetics server e.g.
-        return throwError(errorRes);
-      })
-    );
-    // .subscribe(responseData => {
-    //   console.log(responseData);
-    // }, error => {
-    //   console.log(error.message);
-    // });
   }
 
   fireUrl(id){

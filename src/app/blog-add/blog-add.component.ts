@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { BlogModel } from '../interfaces/blog-model';
 import { EditorService } from '../services/editor.service';
 import { ApiConnectionService } from '../services/api-connection.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-blog-add',
@@ -145,5 +144,9 @@ export class BlogAddComponent implements OnInit {
     //   console.log(data);
     //   this.updateStatus = data.ok;
     // });
+    .subscribe((data) => {
+      console.log(data);
+      this.updateStatus = data.ok;
+    });
   }
 }

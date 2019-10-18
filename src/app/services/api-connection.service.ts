@@ -97,7 +97,6 @@ export class ApiConnectionService {
 
     // --------------- Firebase -------------------
     
-    return this.firebase.updateBlog(id, blogData).toPromise().then((data) => {
-    });
+    return this.firebase.updateBlog(id, blogData);
   }
 }
