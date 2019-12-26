@@ -15,3 +15,9 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+
+    - name: test env
+      run: echo My name is ${Ankur}
+
+    env:
+      Name: Ankur
