@@ -17,7 +17,7 @@ jobs:
         echo test, and deploy your project.
 
     - name: test env
-      run: echo My name is ${env.Ankur}
+      run: echo My name is $NAME
 
     env:
-      Name: Ankur
+      NAME: Ankur
