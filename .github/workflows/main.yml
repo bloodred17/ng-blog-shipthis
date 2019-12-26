@@ -21,7 +21,7 @@ jobs:
 
     - shell: bash
       run: |
-        expr 3 + 7 > math-homework.txt
+        expr $VAR_1 + $VAR_2 > math-homework.txt
     - name: Upload math result for job 1
       uses: actions/upload-artifact@v1
       with:
@@ -38,3 +38,5 @@ jobs:
 
     env:
       NAME: Ankur
+      VAR_1: 10
+      VAR_2: 90
