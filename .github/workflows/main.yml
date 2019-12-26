@@ -25,8 +25,8 @@ jobs:
     - name: Upload math result for job 1
       uses: actions/upload-artifact@v1
       with:
-        name: homework
-        path: math-homework.txt
+        name: $FILE
+        path: math-$FILE.txt
     - name: Download math result for job 1
       uses: actions/download-artifact@v1
       with:
@@ -40,3 +40,4 @@ jobs:
       NAME: Ankur
       VAR_1: 10
       VAR_2: 90
+      FILE: homework
