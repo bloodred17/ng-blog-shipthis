@@ -25,8 +25,8 @@ jobs:
     - name: Upload math result for job 1
       uses: actions/upload-artifact@v1
       with:
-        name: ${env.FILE}
-        path: math-${env.FILE}.txt
+        name: ${{ env.FILE }}
+        path: math-${{ env.FILE }}.txt
     - name: Download math result for job 1
       uses: actions/download-artifact@v1
       with:
