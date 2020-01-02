@@ -41,3 +41,10 @@ jobs:
       VAR_1: 10
       VAR_2: 90
       FILE: homework
+
+  static:
+    runs-on: ubuntu-latest
+
+    steps:
+      name: test static env
+      run: echo echo ${GITHUB_REF##*/}
