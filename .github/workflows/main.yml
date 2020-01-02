@@ -46,5 +46,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      name: test static env
+    - name: test static env
       run: echo echo ${GITHUB_REF##*/}
