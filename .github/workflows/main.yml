@@ -48,5 +48,9 @@ jobs:
     steps:
     - name: test static env Branch
       run: echo echo ${GITHUB_REF##*/}
-    - name: test static env
-      run : git log -1 --pretty=%ah
+    - name: test static env test1
+      run: echo echo ${GITHUB_HEAD_REF##*/}
+    - name: test static env test2
+      run: echo echo ${GITHUB_BASE_REF##*/}
+    - name: test static env test3
+      run: echo echo ${GITHUB_ACTOR##*/}
