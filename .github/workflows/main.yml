@@ -47,8 +47,12 @@ jobs:
 
     steps:
     - name: test static env Branch
-      run: echo echo ${GITHUB_REF##*/}
+      run: echo ${GITHUB_REF}
     - name: test static env test3
-      run: echo echo ${GITHUB_ACTOR##*/}
+      run: echo ${GITHUB_ACTOR}
     - name: test date
       run: echo $(date +%s)
+    - name: install jq
+      run: sudo apt-get install jq
+    - name: create json config
+      run: jq -n --arg author "${GITHUB_ACTOR}" '{author:$author}'
