@@ -49,4 +49,4 @@ jobs:
     - name: test static env Branch
       run: echo echo ${GITHUB_REF##*/}
     - name: test static env
-      run : echo git log -1 --pretty=%ah
+      run : git log -1 --pretty=%ah
