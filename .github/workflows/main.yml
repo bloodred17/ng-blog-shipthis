@@ -55,4 +55,6 @@ jobs:
     - name: install jq
       run: sudo apt-get install jq
     - name: create json config
-      run: jq -n --arg author "${GITHUB_ACTOR}" --arg branch "${GITHUB_REF}" --arg date "$(date +%s)" '{author:$author, branch:$branch, date:$date}'
+      run: |
+        jq -n --arg author "${GITHUB_ACTOR}" --arg branch "${GITHUB_REF##*/}" --arg date "$(date +%s)" '{author:$author, branch:$branch, date:$date}' > config.json
+        ls
